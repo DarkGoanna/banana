@@ -4,12 +4,15 @@
     top: 0
     left: 0
     z-index: 100
-    background: $yellow_light
+    background: transparent
     transition: .5s
+    &.sticky
+        background: $yellow_light
     & .container
         display: grid
-        align-items: center
-        grid-template-areas: '.search phone .''logo menu menu cart'
+        grid-template-areas: 'search search phone .''logo menu menu cart'
+        & > *
+            align-self: center
     &__search
         grid-area: search
         & input
@@ -139,7 +142,6 @@
                     top: 50%
                     left: 50%
                     transform: translate(-50%, -50%) rotate(-45deg)
-
 .cart
     grid-area: cart
     justify-self: end
@@ -152,3 +154,168 @@
     justify-content: center
     border-radius: 50%
     cursor: pointer
+
+// 768
+@media screen and ( max-width: 768px )
+    .header
+        & .container
+            grid-template-areas: 'logo search phone cart'
+            grid-template-columns: 1fr repeat(3, max-content)
+            justify-content: space-between
+            padding-left: 65px
+        &__search
+            justify-self: center
+            width: 25px
+            height: 25px
+            margin-right: 15px
+            & input
+                transform: translateY(0px)
+                padding: 5px 15px
+                width: 80vw
+                position: fixed
+                left: 10%
+                transition: .3s .2s
+                &:focus
+                    transform: translateY(60px)
+                    transition: .3s
+                    opacity: 1
+                    visibility: visible
+            &.active, &:hover
+                & input
+                    transform: translateY(60px)
+                    transition: .3s
+                    opacity: 1
+                    visibility: visible
+        &__phone
+            justify-self: center
+            margin-right: 15px
+        & .cart
+            justify-self: center
+        & .logo
+            margin-right: 15px
+    .menu
+        &__burger
+            display: flex
+            z-index: 1000
+        &:hover
+            & span
+                background: $orange
+        &__list
+            width: 100%
+            height: 100%
+            background: transparent
+            position: fixed
+            top: 0
+            left: 0
+            transition: .2s
+            opacity: 0
+            visibility: hidden
+            display: flex
+            flex-direction: column
+            justify-content: start
+            overflow-y: scroll
+            transform: translateY(-20%)
+            padding-top: 50%
+            & a
+                opacity: 0
+                visibility: hidden
+        &::-webkit-scrollbar
+            width: 0
+            background: transparent
+            & li.menu-item-has-children
+                position: relative
+                padding-right: 30px
+                width: max-content
+                text-align: center
+            & ul
+                margin-left: 60px
+                transform: translateY(0)
+                background: transparent
+                position: relative
+                left: auto
+                top: auto
+                box-shadow: none
+                height: 0
+                max-height: 0
+                transition: .1s
+                & > li
+                    padding: 0
+                &:hover
+                    background: transparent
+                    & a
+                        color: $orange
+                    & > a
+                        font-weight: 700
+                        font-size: 24px
+                        display: inline-block
+                        color: $orange
+                &:hover
+                    text-align: left
+                & ul
+                    height: auto
+                    max-height: 1000px
+                    & > .menu__arrow
+                        transform: translateY(-20%) rotate(-135deg)
+                        border-color: $orange
+                & .menu__arrow
+                    position: absolute
+                    top: 20px
+                    right: 0
+                    width: 15px
+                    height: 15px
+                    border-right: 2px solid $orange
+                    border-bottom: 2px solid $orange
+                    transform: translateY(-50%) rotate(45deg)
+                    cursor: pointer
+                    transition: .2s
+                    transform-origin: center
+                &.active
+                    text-align: left
+                & > a
+                    color: $orange
+                    & > ul
+                        height: auto
+                        max-height: 1000px
+                        opacity: 1
+                        visibility: visible
+                    & > .menu__arrow
+                        transform: translateY(-20%) rotate(-135deg)
+                        border-color: $orange
+            & li:not(:last-child)
+                margin-right: 0
+            & > li > a
+                font-weight: 700
+                font-size: 36px
+                display: inline-block
+                color: $orange
+            & .menu__sub-list + .menu__arrow
+                top: 30px
+            & .menu__sub-sub-list + .menu__arrow
+                top: 24px
+        &.open
+            background: $yellow
+            transition: .2s
+            & .menu__list
+                opacity: 1
+                visibility: visible
+                transition: .2s
+                background: $yellow
+                transform: translateY(0)
+                z-index: 999
+                & a
+                    opacity: 1
+                    visibility: visible
+// 480
+@media screen and ( max-width: 480px )
+    .header
+        &__phone
+            & span
+                display: none
+        & .logo
+            max-width: 40px
+            width: 100%
+            & img
+                width: 100%
+    .menu
+        &__burger
+            top: 25px

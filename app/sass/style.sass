@@ -29,11 +29,22 @@ input, textarea
 
 section
     padding: 50px 0
+main > section:nth-of-type(1)
+    padding-top: 106px
 
+@media screen and ( max-width: 768px )
+    main > section:nth-of-type(1)
+        padding-top: 73px
+
+@media screen and ( max-width: 480px )
+    main >  section:nth-of-type(1)
+        padding-top: 60px
 @import 'header'
+@import 'intro'
+@import 'info'
+@import 'categories'
+@import 'promotions'
 
-@import 'media-1200'
-@import 'media-1000'
-@import 'media-768'
-@import 'media-580'
-@import 'media-480'
+@media screen and ( max-width: 580px )
+    body
+        font-size: 14px

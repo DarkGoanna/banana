@@ -1,0 +1,61 @@
+.info
+  &__inner
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    gap: 17px
+  &__card
+    padding: 50px 10px 20px
+    border: 3px solid #FFFFFF
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25))
+    border-radius: 25px
+    display: flex
+    flex-direction: column
+    align-items: center
+    text-align: center
+    transition: .05s
+    &:hover
+      background: $yellow
+      transition: .05s
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25)
+      filter: none
+      & svg
+        & path
+          fill: #000
+          transition: 0.05s
+  &__image
+    width: 73px
+    height: 73px
+    display: flex
+    align-items: center
+    & svg
+      & path
+        fill: $orange
+        transition: 0.05s
+        &.no-fill
+          fill: none
+  &__title
+    position: relative
+    padding-bottom: 12px
+    margin-bottom: 12px
+    margin-top: 20px
+    width: 100%
+    &::after
+      content: ''
+      max-width: 76px
+      width: 100%
+      height: 1px
+      background: #000
+      position: absolute
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+@media screen and ( max-width: 768px )
+  .info
+    &__inner
+      grid-template-columns: repeat(2, 1fr)
+    &__card
+      padding-top: 20px
+@media screen and ( max-width: 480px )
+  .info
+    &__inner
+      grid-template-columns: 100%
