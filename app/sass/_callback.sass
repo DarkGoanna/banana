@@ -1,0 +1,58 @@
+.callback
+  background-image: url(../img/callback_bg.jpg)
+  &__inner
+    max-width: 600px
+    width: 100%
+    margin: auto
+    text-align: center
+  &__description
+    margin-top: 20px
+  &__form
+    margin-top: 36px
+    position: relative
+    & input
+      width: 100%
+      height: 45px
+      background: #fff
+      border: 1px solid $orange
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05), inset 0px 4px 15px rgba(0, 0, 0, 0.1)
+      border-radius: 25px
+      padding: 5px 200px 5px 25px
+      font-size: 14px
+      line-height: 1.2
+      &:placeholder
+        font-size: 14px
+        line-height: 1.2
+        color: #B4B4B4
+    & button[type=submit]
+      position: absolute
+      top: 0
+      right: 0
+      border-radius: 25px
+      height: 45px
+      &:hover,
+      &:active
+        border-color: $orange
+        animation: submit .5s
+
+@keyframes submit
+  0%
+    transform: translateX(0)
+  50%
+    transform: translateX(10px)
+  100%
+    transform: translateX(0)
+
+@media screen and ( max-width: 480px )
+  .callback
+    background-image: url(../img/callback_bg_mobile.png)
+    & button[type=submit]
+      position: static
+      top: auto
+      right: auto
+      margin: 15px auto
+      &:hover,
+      &:active
+        animation: none
+    & input
+      padding: 5px 25px

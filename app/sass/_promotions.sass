@@ -1,4 +1,6 @@
 .promotions
+  & .container
+    position: relative
   &__title
     text-align: center
     position: relative
@@ -10,3 +12,37 @@
       bottom: 0
       left: 50%
       transform: translateX(-50%)
+
+  & .swiper-button-next,
+  & .swiper-button-prev
+    content: ''
+    width: 47px
+    height: 47px
+    border-radius: 50%
+    background: $yellow_light
+    box-shadow: 2px 1px 8px 2px rgba(242, 142, 70, 0.25)
+    margin: 0
+
+    &::after
+      content: url(../img/slider-arrow-right.svg)
+      position: absolute
+      top: 50%
+      left: 0
+      transform: translateY(-50%)
+      font-size: inherit
+      transform-origin: center left
+      transition: .2s
+    &:hover
+      &::after
+        transform: translateY(-50%) scale(1.7)
+        transition: .2s
+  & .swiper-button-next
+    right: 0px
+  & .swiper-button-prev
+    left: 0px
+    &::after
+      transform: translateY(-50%) rotate(180deg)
+      left: 100%
+    &:hover
+      &::after
+        transform: translateY(-50%) rotate(180deg) scale(1.7)

@@ -1,0 +1,71 @@
+.catalog
+  &__slider-wrapper
+    position: relative
+  &__inner
+    position: relative
+    & .swiper-button-next,
+    & .swiper-button-prev
+      content: ''
+      width: 47px
+      height: 47px
+      border-radius: 50%
+      background: $yellow_light
+      box-shadow: 2px 1px 8px 2px rgba(242, 142, 70, 0.25)
+      margin: 0
+      transform: translateY(-100%)
+      &::after
+        content: url(../img/slider-arrow-right.svg)
+        position: absolute
+        top: 50%
+        left: 0
+        transform: translateY(-50%)
+        font-size: inherit
+        transform-origin: center left
+        transition: .2s
+      &:hover
+        &::after
+          transform: translateY(-50%) scale(1.7)
+          transition: .2s
+    & .swiper-button-next
+      right: 0px
+    & .swiper-button-prev
+      left: 0px
+      &::after
+        transform: translateY(-50%) rotate(180deg)
+        left: 100%
+      &:hover
+        &::after
+          transform: translateY(-50%) rotate(180deg) scale(1.7)
+  &__row
+    display: flex
+    align-items: center
+    margin: 40px auto 20px
+  &__category-name
+    margin-right: 15px
+    & span
+      color: $orange
+  &__link
+    position: relative
+    padding-right: 30px
+    &::before
+      content: ''
+      width: 20px
+      height: 20px
+      background: $yellow
+      position: absolute
+      top: 50%
+      right: 0
+      transform: translateY(-40%)
+      border-radius: 50%
+    &::after
+      content: url(../img/slider-arrow-right.svg)
+      position: absolute
+      top: 50%
+      right: 0
+      transform: translate(-5px, -40%) scale(.8)
+      transform-origin: center
+      transition: .2s
+    &:hover
+      &::after
+        transform: translate(5px, -40%) scale(1.1)
+        transition: .2s

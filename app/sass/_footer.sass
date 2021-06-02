@@ -1,0 +1,42 @@
+.footer
+  background-image: url(../img/footer__bg.jpg)
+  padding: 75px 0
+  font-weight: 700
+  & .container
+    display: grid
+    grid-template-areas: 'logo menu contacts text''logo menu contacts socials'
+    column-gap: 45px
+  &__logo
+    grid-area: logo
+  &__menu
+    grid-area: menu
+    & .menu__list
+      display: grid
+      grid-template-columns: repeat(2, 1fr)
+      & li
+        margin-bottom: 5px
+  &__contacts
+    grid-area: contacts
+  &__phone
+    margin-bottom: 5px
+  &__text
+    grid-area: text
+    margin-bottom: 10px
+  &__socials
+    grid-area: socials
+    & a
+      width: 44px
+      height: 44px
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      &:not(:last-child)
+        margin-right: 20px
+      & svg
+        height: 100%
+@media screen and ( max-width: 1200px )
+  .footer
+    & .container
+      column-gap: 20px
+    & .menu__list
+      grid-template-columns: 100%

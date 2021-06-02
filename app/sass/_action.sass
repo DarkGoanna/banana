@@ -1,0 +1,46 @@
+.action
+  &__inner
+    background-image: url(../img/action_bg.png)
+  & .container
+    display: flex
+    align-items: center
+    justify-content: space-between
+  &__description
+    margin: 50px 0
+  &__image
+    max-height: 400px
+    height: 100%
+    margin: -50px 0
+    display: inline-block
+    & source,
+    & img
+      height: 100%
+  &__btn
+    margin-top: 36px
+  &__text
+    margin-top: 20px
+
+@media screen and ( max-width: 768px )
+  .action
+    &__image
+      margin: 0
+      & source,
+      & img
+        max-height: 250px
+@media screen and ( max-width: 480px )
+  .action
+    &__inner
+      background-image: url(../img/action_bg_mobile.jpg)
+      padding-top: 30px
+    & .container
+      flex-direction: column
+    &__image
+      margin-bottom: -50px
+      margin-top: 30px
+      align-self: flex-end
+      & source,
+      & img
+        max-height: 200px
+    &__description
+      margin: 0
+      width: 100%

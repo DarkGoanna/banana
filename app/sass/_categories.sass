@@ -4,6 +4,8 @@
   background-position: 0 -20px, 100% calc(100% + 20px)
   background-repeat: no-repeat
   padding: 100px 0 150px
+  & .container
+    position: relative
   &::before
     content: ''
     width: 100%
@@ -60,8 +62,10 @@
       &::after
         transform: translateY(-50%) scale(1.7)
         transition: .2s
-
+  & .swiper-button-next
+    right: 0px
   & .swiper-button-prev
+    left: 0px
     &::after
       transform: translateY(-50%) rotate(180deg)
       left: 100%

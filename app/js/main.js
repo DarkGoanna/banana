@@ -65,8 +65,8 @@ document.querySelector('.search__btn').addEventListener('click', (e) => {
 if (document.querySelector('.categories__slider')) {
   new Swiper(".categories__slider", {
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: ".categories .swiper-button-next",
+      prevEl: ".categories .swiper-button-prev",
     },
     breakpoints: {
       320: {
@@ -77,30 +77,90 @@ if (document.querySelector('.categories__slider')) {
       },
       768: {
         slidesPerView: 3,
-
       },
     },
   });
 }
 
-// categories
+// promotions
 if (document.querySelector('.promotions__slider')) {
   new Swiper(".promotions__slider", {
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
+      nextEl: ".promotions .swiper-button-next",
+      prevEl: ".promotions .swiper-button-prev",
     },
     breakpoints: {
       320: {
         slidesPerView: 1,
       },
-      580: {
+      480: {
         slidesPerView: 2,
       },
-      768: {
+      580: {
         slidesPerView: 3,
-
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 20,
+      },
+      1000: {
+        slidesPerView: 4,
+        spaceBetween: 50,
       },
     },
   });
+}
+
+// catalog
+if (document.querySelector('.catalog__slider')) {
+  document.querySelectorAll('.catalog__slider').forEach(slider => {
+
+    const next = slider.parentElement.querySelector('.swiper-button-next');
+    const prev = slider.parentElement.querySelector('.swiper-button-prev');
+
+    new Swiper(slider, {
+      navigation: {
+        nextEl: next,
+        prevEl: prev,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+        },
+        480: {
+          slidesPerView: 2,
+        },
+        580: {
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+        1000: {
+          slidesPerView: 4,
+          spaceBetween: 50,
+        },
+      },
+    });
+  })
+}
+
+// btn "read more" in seo
+if (document.querySelector(".seo")) {
+  const less = 'Свернуть';
+  const more = 'Подробнее';
+  const e = document.querySelector(".seo__text");
+
+  if (e.offsetHeight > Number.parseInt(e.style.getPropertyValue('--height'))) {
+    e.parentElement.insertAdjacentHTML("beforeend", '<button type="button" class="seo__btn btn btn_orange"></button>');
+    const t = document.querySelector(".seo__btn");
+
+    e.classList.add("less");
+    t.textContent = more;
+    t.addEventListener("click", () => {
+      t.textContent = e.classList.contains('less') ? more : less;
+      e.classList.toggle("less");
+    })
+  }
 }

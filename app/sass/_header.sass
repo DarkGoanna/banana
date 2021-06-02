@@ -10,7 +10,7 @@
         background: $yellow_light
     & .container
         display: grid
-        grid-template-areas: 'search search phone .''logo menu menu cart'
+        grid-template-areas: 'search search phone phone''logo menu menu cart'
         & > *
             align-self: center
     &__search
@@ -20,10 +20,10 @@
             padding: 3px 40px 3px 10px
     &__phone
         grid-area: phone
-        & a
-            display: flex
-            align-items: center
-
+.phone
+    & a
+        display: flex
+        align-items: center
 .search
     display: flex
     align-items: center
