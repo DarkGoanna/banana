@@ -1,6 +1,14 @@
 .catalog
+  &__title
+    text-align: center
+    &_icon
+      margin-bottom: 20px
   &__slider-wrapper
     position: relative
+  &__wrapper
+    display: grid
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
+    gap: 40px
   &__inner
     position: relative
     & .swiper-button-next,

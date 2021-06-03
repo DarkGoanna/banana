@@ -159,8 +159,23 @@ if (document.querySelector(".seo")) {
     e.classList.add("less");
     t.textContent = more;
     t.addEventListener("click", () => {
-      t.textContent = e.classList.contains('less') ? more : less;
       e.classList.toggle("less");
+      t.textContent = e.classList.contains('less') ? more : less;
     })
   }
 }
+
+// popup
+const popup = document.querySelector('.popup-wrapper');
+document.querySelectorAll('.call-popup').forEach(btn => {
+  btn.addEventListener('click', () => {
+    popup.classList.add('open');
+    window.classList.add('scrollOff');
+  })
+})
+popup.addEventListener('click', e => {
+  if (e.target.classList.contains('popup-wrapper') || e.target.classList.contains('popup__close')) {
+    popup.classList.remove('open');
+    window.classList.remove('scrollOff');
+  }
+})

@@ -1,5 +1,7 @@
 .product-card
   text-align: center
+  padding: 0 0 20px
+  border: 1px solid transparent
   &__image
     position: relative
     overflow: hidden
@@ -8,9 +10,12 @@
     justify-content: center
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1)
     height: 208px
-    & source,
     & img
       object-fit: cover
+      position: absolute
+      bottom: 10px
+      left: 50%
+      transform: translateX(-50%)
   &__label
     background: #38B000
     color: #fff
@@ -36,6 +41,7 @@
       &:not(:last-child)
         margin-right: 10px
   &:hover
+    border: 1px solid $orange
     & .product-card__curtain
       transform: translateY(0)
       transition: .2s

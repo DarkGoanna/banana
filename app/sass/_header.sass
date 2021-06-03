@@ -6,11 +6,12 @@
     z-index: 100
     background: transparent
     transition: .5s
+    padding: 15px 0
     &.sticky
         background: $yellow_light
     & .container
         display: grid
-        grid-template-areas: 'search search phone phone''logo menu menu cart'
+        grid-template-areas: 'logo search phone cart''logo menu menu cart'
         & > *
             align-self: center
     &__search
@@ -84,7 +85,7 @@
                     z-index: 100
                     top: 100%
                     left: -10px
-                    background: #9ae9d2
+                    background: $orange
                     border-top: 10px solid transparent
                     width: max-content
                     box-shadow: 12px 12px 12px -12px rgba(0, 0, 0, 0.25)
@@ -116,7 +117,7 @@
         flex-direction: column
         justify-content: space-between
         position: absolute
-        top: 30px
+        top: 40px
         z-index: 101
         left: 15px
         cursor: pointer
@@ -154,6 +155,84 @@
     justify-content: center
     border-radius: 50%
     cursor: pointer
+
+.call-btn
+    position: fixed
+    right: 30px
+    bottom: 30px
+    background: transparent
+    border: none
+    cursor: pointer
+
+.popup-wrapper
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.8) url(../img/Banana_bg_2_color.svg) no-repeat calc( 50% + 50px ) 50%
+    background-size: 1000px
+    z-index: 999
+    opacity: 0
+    visibility: hidden
+    transition: .2s
+    &.open
+        opacity: 1
+        visibility: visible
+        transition: .2s
+.popup
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background: rgba($yellow, .95)
+    color: #fff
+    padding: 80px 40px
+    box-shadow: 10px 10px 78px 0px rgba(34, 60, 80, 0.2), -10px -10px 78px 0px rgba(34, 60, 80, 0.2)
+    border-radius: 10px
+    &__close
+        width: 30px
+        height: 30px
+        position: absolute
+        top: 10px
+        right: 10px
+        border: none
+        background: none
+        cursor: pointer
+        &::before,
+        &::after
+            content: ''
+            width: 100%
+            height: 2px
+            background: $dark
+            position: absolute
+            top: 50%
+            left: 50%
+        &::before
+            transform: translate(-50%, -50%) rotate(45deg)
+        &::after
+            transform: translate(-50%, -50%) rotate(-45deg)
+    &__title
+        text-align: center
+        font-size: 30px
+        margin-bottom: 50px
+        color: $dark
+    & input
+        width: 100%
+        background: none
+        border: none
+        border-bottom: 2px solid $dark
+        padding: 5px 10px
+        margin-bottom: 15px
+        color: $dark
+        font-size: 18px
+        font-weight: 400
+    & input::placeholder
+        color: $dark
+        font-size: 18px
+        font-weight: 400
+    &__btn
+        margin-top: 20px
 
 // 768
 @media screen and ( max-width: 768px )
@@ -193,118 +272,127 @@
             justify-self: center
         & .logo
             margin-right: 15px
-    .menu
-        &__burger
-            display: flex
-            z-index: 1000
-        &:hover
-            & span
-                background: $orange
-        &__list
-            width: 100%
-            height: 100%
-            background: transparent
-            position: fixed
-            top: 0
-            left: 0
-            transition: .2s
-            opacity: 0
-            visibility: hidden
-            display: flex
-            flex-direction: column
-            justify-content: start
-            overflow-y: scroll
-            transform: translateY(-20%)
-            padding-top: 50%
-            & a
+        .menu
+            &__burger
+                display: flex
+                z-index: 1000
+                &:hover
+                    & span
+                        background: $orange
+            &__list
+                width: 100%
+                height: 100%
+                background: transparent
+                position: fixed
+                top: 0
+                left: 0
+                transition: .2s
                 opacity: 0
                 visibility: hidden
-        &::-webkit-scrollbar
-            width: 0
-            background: transparent
-            & li.menu-item-has-children
-                position: relative
-                padding-right: 30px
-                width: max-content
-                text-align: center
-            & ul
-                margin-left: 60px
-                transform: translateY(0)
-                background: transparent
-                position: relative
-                left: auto
-                top: auto
-                box-shadow: none
-                height: 0
-                max-height: 0
-                transition: .1s
-                & > li
-                    padding: 0
-                &:hover
+                display: flex
+                flex-direction: column
+                justify-content: start
+                overflow-y: scroll
+                transform: translateY(-20%)
+                padding-top: 50%
+                & a
+                    opacity: 0
+                    visibility: hidden
+                &::-webkit-scrollbar
+                    width: 0
                     background: transparent
-                    & a
-                        color: $orange
+                & li.menu-item-has-children
+                    position: relative
+                    padding-right: 30px
+                    width: max-content
+                    text-align: center
+                    & ul
+                        margin-left: 60px
+                        transform: translateY(0)
+                        background: transparent
+                        position: relative
+                        left: auto
+                        top: auto
+                        box-shadow: none
+                        height: 0
+                        max-height: 0
+                        transition: .3s
+                        & > li
+                            padding: 0
+                            &:hover
+                                background: transparent
+                                & > a
+                                    color: $orange
+                    &:hover
+                        & ul
+                            max-height: 0px
+                            opacity: 0
+                            visibility: hidden
+                        & > .menu__arrow
+                            border-color: $orange
+                    & .menu__arrow
+                        position: absolute
+                        top: 20px
+                        right: 0
+                        width: 15px
+                        height: 15px
+                        border-right: 2px solid $dark
+                        border-bottom: 2px solid $dark
+                        transform: translateY(-50%) rotate(45deg)
+                        cursor: pointer
+                        transition: .2s
+                        transform-origin: center
+                    &.active
+                        & > a
+                            color: $orange
+                        & > ul
+                            height: auto
+                            max-height: 1000px
+                            opacity: 1
+                            visibility: visible
+                        & > .menu__arrow
+                            transform: translateY(-20%) rotate(-135deg)
+                            border-color: $orange
+                & li:not(:last-child)
+                    margin-right: 0
+                & > li
                     & > a
                         font-weight: 700
-                        font-size: 24px
+                        font-size: 36px
                         display: inline-block
-                        color: $orange
-                &:hover
-                    text-align: left
-                & ul
-                    height: auto
-                    max-height: 1000px
-                    & > .menu__arrow
-                        transform: translateY(-20%) rotate(-135deg)
-                        border-color: $orange
-                & .menu__arrow
-                    position: absolute
-                    top: 20px
-                    right: 0
-                    width: 15px
-                    height: 15px
-                    border-right: 2px solid $orange
-                    border-bottom: 2px solid $orange
-                    transform: translateY(-50%) rotate(45deg)
-                    cursor: pointer
-                    transition: .2s
-                    transform-origin: center
-                &.active
-                    text-align: left
-                & > a
-                    color: $orange
-                    & > ul
-                        height: auto
-                        max-height: 1000px
-                        opacity: 1
-                        visibility: visible
-                    & > .menu__arrow
-                        transform: translateY(-20%) rotate(-135deg)
-                        border-color: $orange
-            & li:not(:last-child)
-                margin-right: 0
-            & > li > a
-                font-weight: 700
-                font-size: 36px
-                display: inline-block
-                color: $orange
-            & .menu__sub-list + .menu__arrow
-                top: 30px
-            & .menu__sub-sub-list + .menu__arrow
-                top: 24px
-        &.open
-            background: $yellow
-            transition: .2s
-            & .menu__list
-                opacity: 1
-                visibility: visible
-                transition: .2s
+                        color: $dark
+                    &:hover
+                        & > a
+                            color: $orange
+                & .menu__sub-list + .menu__arrow
+                    top: 30px
+                & .menu__sub-sub-list + .menu__arrow
+                    top: 24px
+            &.open
                 background: $yellow
-                transform: translateY(0)
-                z-index: 999
-                & a
+                transition: .2s
+                & .menu__list
                     opacity: 1
                     visibility: visible
+                    transition: .2s
+                    background: $yellow
+                    transform: translateY(0)
+                    z-index: 999
+                    & a
+                        opacity: 1
+                        visibility: visible
+    .call-btn
+        right: 15px
+        bottom: 15px
+        width: 50px
+        height: 50px
+        & img
+            width: 100%
+    .popup-wrapper
+        background: rgba(0, 0, 0, 0.8)
+    .popup
+        background: rgba($yellow, .95)
+        width: 80%
 // 480
 @media screen and ( max-width: 480px )
     .header
@@ -318,4 +406,7 @@
                 width: 100%
     .menu
         &__burger
-            top: 25px
+            top: 35px
+    .popup
+        width: 90%
+        padding: 50px 20px

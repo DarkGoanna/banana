@@ -11,14 +11,14 @@ body
     font-weight: 400
     font-size: 18px
     background-color: #fff
-    // &::-webkit-scrollbar
-    //     width: 5px
-    //     background: #fff
-    // &::-webkit-scrollbar-track
-    //     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+    &::-webkit-scrollbar
+        width: 7px
+        background: #fff
+    &::-webkit-scrollbar-track
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
 
-    // &::-webkit-scrollbar-thumb
-    //     background: $main
+    &::-webkit-scrollbar-thumb
+        background: $orange
 a
     text-decoration: none
     color: inherit
@@ -30,15 +30,17 @@ input, textarea
 section
     padding: 50px 0
 main > section:nth-of-type(1)
-    padding-top: 106px
+    padding-top: 200px
 
 @media screen and ( max-width: 768px )
     main > section:nth-of-type(1)
-        padding-top: 73px
+        padding-top: 150px
+    section
+        padding: 30px 0
 
 @media screen and ( max-width: 480px )
     main >  section:nth-of-type(1)
-        padding-top: 60px
+        padding-top: 100px
 @import 'header'
 @import 'intro'
 @import 'info'
@@ -50,6 +52,11 @@ main > section:nth-of-type(1)
 @import 'callback'
 @import 'seo'
 @import 'footer'
+@import 'breadcrumbs'
+@import 'about'
+@import 'contacts'
+@import 'delivery'
+@import 'how-we-work'
 
 @media screen and ( max-width: 580px )
     body
